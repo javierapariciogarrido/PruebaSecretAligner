@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LISTAS TODO{% endblock %}
+
+{% block body %}
+    <form action="{{url('todo_save')}}" method="POST">
+        <div id="bloquenombre">
+             <label for="nombre">Nombre: </label>
+             <input type="text" name="nombre">
+        </div>
+        
+        <div id="bloquefechatope">
+            <label for="fechatope">Fecha Tope:</label>
+            <input type="date" name="fechatope">
+        </div>
+        <div id="bloqueestado">
+             <label for="estado">Estado: </label>
+             <select name="estado">
+                <option value="realizada">Realizada</option>
+                <option value="pendiente">Pendiente</option>
+            </select>    
+        </div>
+        
+        
+        <input type="submit" value="Guardar">
+        
+    </form>    
+{% endblock %}
+

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LISTAS TODO{% endblock %}
+
+{% block body %}
+    
+    
+    
+    <div class="header">
+    
+    <!-- IR A PORTADA PRINCIPAL -->    
+    <a href="{{url('todo_index')}}">INICIO</a>    
+        
+    <h2>VISUALIZAR LISTADO COMPLETO</h2>    
+        <ul>
+            {% for elementolista in listatodo %}
+                
+                <li>
+                    <ul>
+                        <li>Nombre: {{elementolista.nombre}}</li>
+                        <li>Creado: {{elementolista.fechaCreacion|date('d-m-Y')}}</li>
+                        <li>Fecha Tope: {{elementolista.fechaTope|date('d-m-Y')}}</li>
+                        <li>Estado: {{elementolista.estado}}</li>
+                        <li>----------------------------------------------</li>
+                    </ul>
+                
+                </li>
+                
+            {%endfor%}    
+        </ul>
+    </div>    
+{% endblock %}
+
+
+
+
+
+
+

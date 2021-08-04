@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LISTAS TODO{% endblock %}
+
+{% block body %}
+
+{# Mostramos mensaje sesión de éxito o fracaso de la operación #}
+{% for mensaje in app.session.flashbag.get('message-exito') %}
+    <p id="mensaje">{{mensaje}}</p>
+{% endfor %}    
+    
+    
+<div class="header">
+        
+    <ul id="menu">
+        <li><a href="{{url('todo_formulario')}}">AÑADIR ELEMENTO A LISTA</a> </li>
+        <li><a href="{{url('todo_listar')}}">VISUALIZAR LISTADO</a></li>
+    </ul>
+</div>
+{% endblock %}

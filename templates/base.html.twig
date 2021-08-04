@@ -6,6 +6,7 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/styles.css')}}">
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
@@ -14,6 +15,7 @@
         {% endblock %}
     </head>
     <body>
+        <h1>LISTAS TODO</h1>
         {% block body %}{% endblock %}
     </body>
 </html>

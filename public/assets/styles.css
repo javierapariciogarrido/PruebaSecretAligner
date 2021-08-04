@@ -1,0 +1,65 @@
+/*ESTILOS GENERALES*/
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+h1{
+    text-align: center;
+    margin-right:12%;
+    margin-top:4%;
+}
+
+
+.header {
+    margin: 1em auto;
+    max-width: 800px; 
+    width: 95%; 
+    font: 18px/1.5 sans-serif;
+}
+.header code { 
+    background: #F5F5F5; 
+    padding: 2px 6px; 
+}
+
+
+/*ESTILOS MENÚ PRINCIPAL*/
+#menu{
+    display: flex;
+    width: 90%;
+}
+
+#menu li{
+    margin-top:5%;
+    flex-grow: 1;
+    list-style: none;
+}
+
+
+
+/*ESTILOS FORMULARIO*/
+form{
+    text-align: center;
+    margin-top:3%;
+    margin-right: 12%;
+}
+
+
+input[type="submit"],
+input[type="text"],
+select{
+    margin-top:1%;
+}
+
+
+/*ESTILOS ALERTA */
+#mensaje{
+    width: 20%;
+    font-weight: bolder;
+    background-color: green;
+    color:white;
+    text-align: center;
+    margin: 30px auto;
+    margin-left:37.2%;
+}

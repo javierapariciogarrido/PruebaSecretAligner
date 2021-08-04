@@ -1,3 +1,28 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+
+# RUTA RAIZ 
+
+
+
+# RUTA DEL INICIO DE LA TABLA TODO
+todo_index:
+   path: /
+   controller: App\Controller\TodoController::index
+
+   
+#RUTA FORMULARIO AÑADIR EN LISTA
+todo_formulario:
+   path: /todo/formulario
+   controller: App\Controller\TodoController::formulario_add
+
+   
+   
+# RUTA PARA GUARDAR TAREA   
+todo_save:
+    path: /todo/save
+    controller: App\Controller\TodoController::save
+   
+# RUTA PARA LISTAR TODO
+todo_listar:
+    path: /todo/listar
+    controller: App\Controller\TodoController::visualizarlistado
+

@@ -38,7 +38,7 @@ class Todo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_tope", type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_tope", type="datetime", nullable=true)
      */
     private $fechaTope;
 
@@ -82,7 +82,7 @@ class Todo
     {
         return $this->fechaTope;
     }
-
+                                 
     public function setFechaTope(\DateTimeInterface $fechaTope): self
     {
         $this->fechaTope = $fechaTope;
