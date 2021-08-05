@@ -29,6 +29,20 @@
                             <a href="{{url('todo_modificar_estado',{'id':elementolista.id})}}">Marcar como realizada la tarea</a>
                         {% endif %}
                         
+                        {# SI ERES ADMINISTRADOR PUEDES CAMBIAR EL DUEÑO DE LA TAREA #}
+                        {% if app.user is not null and app.user.role == 'ROLE_ADMIN' %}
+                            <form action="{{url('modificar_propietario')}}" method='POST'>
+                                <input type='hidden' name='id_tarea' value='{{elementolista.id}}'
+                                <label for="propietario">Cambiar dueño de tarea</label>
+                                <select name="propietario" id="estado" >
+                                    {% for usuario in todos_usuarios %}
+                                        <option value="{{usuario.id}}">{{usuario.nombre}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type='submit' value='Guardar'>
+                            </form>    
+                        {% endif %}    
+                        
                     </ul>
                 <li>----------------------------------------------</li>
                 </li>

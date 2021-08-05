@@ -48,4 +48,7 @@ register:
     path: /registro
     controller: App\Controller\UserController::register
     
-    
+# RUTA PARA MODIFICAR PROPIETARIO TAREA 
+modificar_propietario:
+    path: /modificar_propietario
+    controller: App\Controller\TodoController::modificar_propietario_tarea

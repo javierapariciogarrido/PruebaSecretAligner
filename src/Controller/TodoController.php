@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Todo; // Entidad Todo para gestionar lista Todo
-use App\Entity\User;
+use App\Entity\User; //Entidad usuario
 use Symfony\Component\HttpFoundation\Request; // Para recoger las peticiones 
 use Symfony\Component\HttpFoundation\Session\Session; //Para crear sesión
 use Symfony\Component\Security\Core\User\UserInterface; // Importo el logado en sesion
@@ -89,9 +89,14 @@ class TodoController extends AbstractController{
         //Guardamos todos los registros de la lista en listatodo ordenado por id descendente
         $listatodo=$todo_repo->findBy([],['id'=>'DESC']);
         
+        //Repositorio usuarios
+        $user_repo= $this->getDoctrine()->getRepository(User::class);
+        $todosUsuarios=$user_repo->findBy([],['id'=>'DESC']);
+        
         
         return $this->render('todo/listado.html.twig',[
-            'listatodo'=>$listatodo
+            'listatodo'=>$listatodo,
+            'todos_usuarios'=>$todosUsuarios
         ]);
     }
     
@@ -106,6 +111,43 @@ class TodoController extends AbstractController{
             'listatodo'=>$listausuario
         ]);
     }
+    
+    public function modificar_propietario_tarea(Request $request){
+        //Obtnemos el id del dueño
+        $id_usuario=$request->get('propietario');
+        
+        //Obtenemos el id de la tarea a cambiar
+        $id_tarea=$request->get('id_tarea');
+        
+        //Cargo entity manager
+        $em=$this->getDoctrine()->getManager();
+        //Cargo repositorio
+        $todo_repo = $this->getDoctrine()->getRepository(Todo::class);
+        
+        $tarea=$todo_repo->find($id_tarea);
+        
+        //Seteo el valor del dueño de la tarea
+        
+        $tarea->User->setUser($id_usuario);
+        
+        //Persisto el objeto
+        $em->persist($tarea);
+        
+        //Guardo el dato
+        $em->flush();
+        
+        
+        //Creamos sesión para informar de que se ha guardado correctamente
+        $session=new Session();
+        $session->getFlashBag()->add('message','Has modificado el propietario de la tarea correctamente');
+        
+        
+        
+        return $this->redirectToRoute('todo_index');
+        
+    }
+    
+    
     
     
     
