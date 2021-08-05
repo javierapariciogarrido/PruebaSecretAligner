@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;// Libreria Validacion 
 
 /**
  * User
@@ -35,6 +36,11 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="nombre", type="string", length=100, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *               pattern="/[a-zA-Z ]+/",
+     *               message="El nombre no es valido"
+     *              )
      */
     private $nombre;
 
@@ -42,6 +48,11 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="apellidos", type="string", length=200, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *               pattern="/[a-zA-Z ]+/",
+     *               message="Los apellidos no son validos"
+     *              )
      */
     private $apellidos;
 
@@ -49,6 +60,11 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *              message="El email no es valido."
+     *                           
+     * )
      */
     private $email;
 
@@ -56,6 +72,9 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(
+     *              message="La contraseña no puede estar vacía."
+     * )
      */
     private $password;
 

@@ -1,7 +1,4 @@
 
-# RUTA RAIZ 
-
-
 
 # RUTA DEL INICIO DE LA TABLA TODO
 todo_index:
@@ -40,4 +37,10 @@ login:
 #RUTA LOGOUT
 logout:
     path: /logout
+    
+# RUTA REGISTRO USUARIOS 
+register:
+    path: /registro
+    controller: App\Controller\UserController::register
+    
     

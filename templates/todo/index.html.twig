@@ -11,7 +11,13 @@
     
     
 <div class="header">
+    
+    {%if app.user is defined %}
+        <h2>Estás logado {{app.user.nombre}}</h2>
         
+        
+        <h4><a href="{{url('logout')}}">DESLOGAR</a></h4>
+    {% endif %}    
     <ul id="menu">
         <li><a href="{{url('todo_formulario')}}">AÑADIR ELEMENTO A LISTA</a> </li>
         <li><a href="{{url('todo_listar')}}">VISUALIZAR LISTADO</a></li>

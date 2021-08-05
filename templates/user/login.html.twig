@@ -19,6 +19,16 @@
             {%for mensaje in app.session.flashbag.get('error')%}
                 <p class="errorlogin">{{mensaje}}</p>
             {% endfor %}
+            
+            {# MENSAJE ERROR REGISTRO  #}
+            {% for mensaje in app.session.flashbag.get('error-login') %}
+                <p id="mensaje-error">{{mensaje}}</p>
+            {% endfor %}
+            {# MENSAJE REGISTRO CORRECTO#}
+            {% for mensaje in app.session.flashbag.get('message') %}
+                <p id="mensaje">{{mensaje}}</p>
+            {% endfor %}
+            
             <form action="{{path('login')}}" method="POST">
                 <label for="username">Email: </label>
                 <input type="email" id="username" name="_username" value="{{last_username}}"/>
