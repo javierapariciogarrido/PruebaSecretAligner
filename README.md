@@ -7,3 +7,4 @@ TAREA 5:Crear un comando de Symfony para añadir elementos a la lista por termin
 TAREA 6:Modificar la interfaz realizada en el punto 3 para realizar las modificaciones por ajax.Duración 1h
 TAREA 7:Añadir login y autenticar la aplicación. Duracion:1 hora
 TAREA 8:
+TAREA 9: Añadir creación de usuarios Duracion :45 minutos
