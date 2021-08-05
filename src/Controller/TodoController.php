@@ -25,6 +25,7 @@ class TodoController extends AbstractController{
     
     
     public function save(Request $request){
+        
         //Recogemos datos que nos llegan por el formulario
         $nombre = $request->get("nombre");
         $estado=$request->get("estado");
@@ -33,7 +34,11 @@ class TodoController extends AbstractController{
         //de string a tipo datetime ya que fechatope es tipo datetime
         $fechatope= new \DateTime($request->get("fechatope"));
         
-        
+        if(empty($nombre)|| empty($request->get('fechatope'))){
+            $session=new Session();
+            $session->getFlashBag()->add('error','¡¡FALTAN DATOS POR RELLENAR EN LA TAREA!!');
+            return $this->redirectToRoute('todo_formulario');
+        }
         
         //Cargo entity manager 
         $em = $this->getDoctrine()->getManager();

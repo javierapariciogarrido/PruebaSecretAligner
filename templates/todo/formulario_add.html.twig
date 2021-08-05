@@ -4,29 +4,33 @@
 
 {% block body %}
             
-    <form action="{{url('todo_save')}}" method="POST">
+    <form id="formulario_guardar_tarea" action="{{url('todo_save')}}" method="POST">
+        {# Mostramos mensaje sesión de éxito o fracaso de la operación #}
+        {% for mensaje in app.session.flashbag.get('error') %}
+            <p id="mensaje-error">{{mensaje}}</p>
+        {% endfor %}
         <!-- IR A PORTADA PRINCIPAL -->    
         <a href="{{url('todo_index')}}">PORTADA PRINCIPAL</a>
         
         <div id="bloquenombre">
              <label for="nombre">Nombre: </label>
-             <input type="text" name="nombre">
+             <input type="text" name="nombre" id="nombre">
         </div>
         
         <div id="bloquefechatope">
             <label for="fechatope">Fecha Tope:</label>
-            <input type="date" name="fechatope">
+            <input type="date" name="fechatope" id="fechatope">
         </div>
         <div id="bloqueestado">
              <label for="estado">Estado: </label>
-             <select name="estado" >
+             <select name="estado" id="estado" >
                 <option value="realizada">Realizada</option>
                 <option value="pendiente" selected >Pendiente</option>
             </select>    
         </div>
         
         
-        <input type="submit" value="Guardar">
+        <input type="submit" value="Guardar" id="guardartarea">
         
     </form>    
 {% endblock %}

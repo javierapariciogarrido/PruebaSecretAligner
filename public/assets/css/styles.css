@@ -53,7 +53,7 @@ select{
 }
 
 
-/*ESTILOS ALERTA */
+/*ESTILOS ALERTAS */
 #mensaje{
     width: 20%;
     font-weight: bolder;
@@ -63,6 +63,17 @@ select{
     margin: 30px auto;
     margin-left:37.2%;
 }
+
+#mensaje-error{
+    width: 20%;
+    font-weight: bolder;
+    background-color: red;
+    color:white;
+    text-align: center;
+    margin: 30px auto;
+    margin-left:37.2%;
+}
+
 
 
 /*ESTILOS DE LA CLASE VERDE QUE SE ENCARGA DE MARCAR EN VERDE LA TAREA REALIZADA*/
