@@ -25,7 +25,7 @@
                         <li>Fecha Tope: {{elementolista.fechaTope|date('d-m-Y')}}</li>
                         <li>Estado: {{elementolista.estado}}</li>
                         
-                        {% if elementolista.estado == 'pendiente'%}
+                        {% if elementolista.estado == 'pendiente' and app.user is not null and app.user.id == elementolista.user.id %}
                             <a href="{{url('todo_modificar_estado',{'id':elementolista.id})}}">Marcar como realizada la tarea</a>
                         {% endif %}
                         
