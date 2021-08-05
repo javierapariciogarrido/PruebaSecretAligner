@@ -57,7 +57,7 @@ class TodoController extends AbstractController{
         
         //Creamos sesión para informar de que se ha guardado correctamente
         $session=new Session();
-        $session->getFlashBag()->add('message-exito','Tarea creda correctamente en lista');
+        $session->getFlashBag()->add('message','Tarea creda correctamente en lista');
         
         //Redirecciono a la Ruta de Inicio
         return $this->redirectToRoute('todo_index');
@@ -77,6 +77,43 @@ class TodoController extends AbstractController{
             'listatodo'=>$listatodo
         ]);
     }
+    
+    
+    public function marcar_tarea_realizada($id){
+        
+        //Cargamos repositorio de todo
+        $todo_repo= $this->getDoctrine()->getRepository(Todo::class);
+        
+        //Cargamos entity manager
+        $em=$this->getDoctrine()->getManager();
+        
+        // Cargamos la tarea que queremos marcar como realizada
+        $tarea_a_modificar=$todo_repo->find($id);
+        
+        //Comprobar si el objeto llega correctamente,si no llega damos error
+        if(!$tarea_a_modificar){
+            $session=new Session();
+            $session->getFlashBag()->add('message','¡¡La tarea a modificar no existe!!');
+        
+        }else{ // Si la tarea existe
+            //Asignamos el valor del campo estado al registro que queremos modificar
+            $tarea_a_modificar->setEstado('realizada');
+
+            //Persistimos en doctrine los datos que queremos modificar
+            $em->persist($tarea_a_modificar);
+            //Guardamos en la base de datos
+            $em->flush();
+            
+            //Creamos mensaje con sesión
+            $session=new Session();
+            $session->getFlashBag()->add('message','¡¡Has puesto la  tarea '.$tarea_a_modificar->getNombre(). ' como realizada correctamente!!');
+        }
+        
+                
+        //Redireccionamos a la página principal
+        return $this->redirectToRoute('todo_index');
+    }
+    
     
     
     

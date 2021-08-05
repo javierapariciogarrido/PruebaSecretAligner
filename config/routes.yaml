@@ -26,3 +26,9 @@ todo_listar:
     path: /todo/listar
     controller: App\Controller\TodoController::visualizarlistado
 
+
+# RUTA PARA MODIFICAR EL ESTADO DE UNA TAREA A REALIZADA
+todo_modificar_estado:
+    path: /todo/modificar_estado/{id}
+    controller: App\Controller\TodoController::marcar_tarea_realizada
+    

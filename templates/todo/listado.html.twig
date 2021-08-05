@@ -14,16 +14,23 @@
     <h2>VISUALIZAR LISTADO COMPLETO</h2>    
         <ul>
             {% for elementolista in listatodo %}
-                
-                <li>
+                {% if elementolista.estado == 'realizada' %}
+                    <li class="verde">
+                {% else %}        
+                    <li>
+                {% endif %}        
                     <ul>
                         <li>Nombre: {{elementolista.nombre}}</li>
                         <li>Creado: {{elementolista.fechaCreacion|date('d-m-Y')}}</li>
                         <li>Fecha Tope: {{elementolista.fechaTope|date('d-m-Y')}}</li>
                         <li>Estado: {{elementolista.estado}}</li>
-                        <li>----------------------------------------------</li>
+                        
+                        {% if elementolista.estado == 'pendiente'%}
+                            <a href="{{url('todo_modificar_estado',{'id':elementolista.id})}}">Marcar como realizada la tarea</a>
+                        {% endif %}
+                        
                     </ul>
-                
+                <li>----------------------------------------------</li>
                 </li>
                 
             {%endfor%}    

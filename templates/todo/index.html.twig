@@ -5,7 +5,7 @@
 {% block body %}
 
 {# Mostramos mensaje sesión de éxito o fracaso de la operación #}
-{% for mensaje in app.session.flashbag.get('message-exito') %}
+{% for mensaje in app.session.flashbag.get('message') %}
     <p id="mensaje">{{mensaje}}</p>
 {% endfor %}    
     

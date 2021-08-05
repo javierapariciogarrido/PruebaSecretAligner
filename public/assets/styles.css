@@ -63,3 +63,9 @@ select{
     margin: 30px auto;
     margin-left:37.2%;
 }
+
+
+/*ESTILOS DE LA CLASE VERDE QUE SE ENCARGA DE MARCAR EN VERDE LA TAREA REALIZADA*/
+.verde{
+    color: #1bd729;
+}
