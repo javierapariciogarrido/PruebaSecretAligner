@@ -3,7 +3,11 @@
 {% block title %}LISTAS TODO{% endblock %}
 
 {% block body %}
+            
     <form action="{{url('todo_save')}}" method="POST">
+        <!-- IR A PORTADA PRINCIPAL -->    
+        <a href="{{url('todo_index')}}">PORTADA PRINCIPAL</a>
+        
         <div id="bloquenombre">
              <label for="nombre">Nombre: </label>
              <input type="text" name="nombre">
@@ -15,9 +19,9 @@
         </div>
         <div id="bloqueestado">
              <label for="estado">Estado: </label>
-             <select name="estado">
+             <select name="estado" >
                 <option value="realizada">Realizada</option>
-                <option value="pendiente">Pendiente</option>
+                <option value="pendiente" selected >Pendiente</option>
             </select>    
         </div>
         
