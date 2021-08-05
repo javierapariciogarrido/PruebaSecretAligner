@@ -23,6 +23,11 @@ todo_listar:
     path: /todo/listar
     controller: App\Controller\TodoController::visualizarlistado
 
+# PARA LISTAR UN SOLO USUARIO 
+listar_un_usuario:
+    path: /listar/{id}
+    controller: App\Controller\TodoController::visualizar
+    
 
 # RUTA PARA MODIFICAR EL ESTADO DE UNA TAREA A REALIZADA
 todo_modificar_estado:

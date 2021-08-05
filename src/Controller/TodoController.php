@@ -6,8 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Todo; // Entidad Todo para gestionar lista Todo
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request; // Para recoger las peticiones 
 use Symfony\Component\HttpFoundation\Session\Session; //Para crear sesión
+use Symfony\Component\Security\Core\User\UserInterface; // Importo el logado en sesion
+
 
 class TodoController extends AbstractController{
     
@@ -24,11 +27,14 @@ class TodoController extends AbstractController{
     
     
     
-    public function save(Request $request){
+    public function save(Request $request,UserInterface $user){
         
         //Recogemos datos que nos llegan por el formulario
         $nombre = $request->get("nombre");
         $estado=$request->get("estado");
+        
+        //Almacenamos el id del usuario logado
+        $usuario_id =$request->get('usuario_id');
         
         //Obtenemos la fecha que nos llega del formulario y como llega tipo string pasamos 
         //de string a tipo datetime ya que fechatope es tipo datetime
@@ -53,6 +59,12 @@ class TodoController extends AbstractController{
         $todo->setFechaCreacion(new \Datetime('now'));
         $todo->setFechaTope($fechatope);
         $todo->setEstado($estado);
+        //Asignamos el id del usuario que crea la tarea
+        $todo->setUser($user);
+        
+        
+        
+        
         
         //Persistir(Guardar objeto en doctrine)
         $em->persist($todo);
@@ -82,6 +94,19 @@ class TodoController extends AbstractController{
             'listatodo'=>$listatodo
         ]);
     }
+    
+    public function visualizar($id){
+        //Cargo repositorio
+        $user_repo=$this->getDoctrine()->getRepository(User::class);
+        
+        //Guardamos registro del usuario que esta logado
+        $usuario=$user_repo->find($id);
+        $listausuario=$usuario->getTasks();
+        return $this->render('todo/listado.html.twig',[
+            'listatodo'=>$listausuario
+        ]);
+    }
+    
     
     
     public function marcar_tarea_realizada($id){

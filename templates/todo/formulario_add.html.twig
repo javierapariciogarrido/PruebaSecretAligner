@@ -5,6 +5,11 @@
 {% block body %}
             
     <form id="formulario_guardar_tarea" action="{{url('todo_save')}}" method="POST">
+        {# ALMACENAMOS EL ID DEL USUARIO EN CAMPO OCULTO Y LO PASAMOS A CONTROLADOR#}
+        {% if app.user is not null  %}
+            <input type="hidden" name="usuario_id" value="{{app.user.id}}">
+        {% endif %}
+        
         {# Mostramos mensaje sesión de éxito o fracaso de la operación #}
         {% for mensaje in app.session.flashbag.get('error') %}
             <p id="mensaje-error">{{mensaje}}</p>
