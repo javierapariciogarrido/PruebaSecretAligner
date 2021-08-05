@@ -6,5 +6,6 @@ TAREA 4:Posibilidad de marcar como realizada la tarea y diferenciar visualmente 
 TAREA 5:Crear un comando de Symfony para añadir elementos a la lista por terminal.Duracion:1h 20min
 TAREA 6:Modificar la interfaz realizada en el punto 3 para realizar las modificaciones por ajax.Duración 1h
 TAREA 7:Añadir login y autenticar la aplicación. Duracion:1 hora
-TAREA 8:
+
 TAREA 9: Añadir creación de usuarios Duracion :45 minutos
+TAREA 10:Un admin puede visualizar las listas TODO del resto de usuarios, pero no modificar sus elementos. Duración:20 minutos
