@@ -32,3 +32,12 @@ todo_modificar_estado:
     path: /todo/modificar_estado/{id}
     controller: App\Controller\TodoController::marcar_tarea_realizada
     
+# RUTA LOGIN
+login:
+    path: /login
+    controller: App\Controller\UserController::login
+    
+#RUTA LOGOUT
+logout:
+    path: /logout
+    

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Todo
  *
- * @ORM\Table(name="todo")
+ * @ORM\Table(name="todo", indexes={@ORM\Index(name="fk_todo_user", columns={"user_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\TodoRepository")
  */
 class Todo
@@ -36,7 +36,7 @@ class Todo
     private $fechaCreacion;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
      * @ORM\Column(name="fecha_tope", type="datetime", nullable=true)
      */
@@ -48,6 +48,16 @@ class Todo
      * @ORM\Column(name="estado", type="string", length=255, nullable=false)
      */
     private $estado;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="tasks")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -82,8 +92,8 @@ class Todo
     {
         return $this->fechaTope;
     }
-                                 
-    public function setFechaTope(\DateTimeInterface $fechaTope): self
+
+    public function setFechaTope(?\DateTimeInterface $fechaTope): self
     {
         $this->fechaTope = $fechaTope;
 
@@ -98,6 +108,18 @@ class Todo
     public function setEstado(string $estado): self
     {
         $this->estado = $estado;
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
